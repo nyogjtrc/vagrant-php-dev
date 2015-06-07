@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#apt-get update
+apt-get update
 
 # git
 apt-get -y install git git-doc
@@ -19,3 +19,7 @@ apt-get -y install mysql-server
 # redis
 apt-get -y install redis-server
 
+# nginx config
+cp /vagrant/provision/config/nginx/* /etc/nginx/sites-available/
+ln -s /etc/nginx/sites-available/develop.local /etc/nginx/sites-enabled/
+service nginx restart

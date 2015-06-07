@@ -1,0 +1,30 @@
+server {
+    listen 80;
+
+    root /home/vagrant/develop-www/;
+    index index.php index.html;
+
+    server_name develop.local;
+
+    access_log /var/log/nginx/develop.access;
+    error_log /var/log/nginx/develop.error;
+
+    location / {
+        try_files $uri $uri/ =404;
+        if (!-e $request_filename) {
+            rewrite ^.*$ /index.php last;
+            break;
+        }
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
