@@ -13,7 +13,7 @@ apt-get -y install git git-doc
 apt-get -y install nginx
 
 # php5
-apt-get -y install php5-fpm php5-cli php5-dev php-pear php5-mysql php5-curl php5-mcrypt
+apt-get -y install php5-fpm php5-cli php5-dev php5-common php-pear php5-mysql curl php5-curl php5-mcrypt php5-gd
 
 # mysql
 echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
