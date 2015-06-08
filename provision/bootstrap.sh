@@ -16,10 +16,17 @@ echo "mysql-server mysql-server/root_password password root" | debconf-set-selec
 echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 apt-get -y install mysql-server
 
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/app-password-confirm password root" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-pass password root" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/app-pass password root" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
+apt-get -y install phpmyadmin
+
 # redis
 apt-get -y install redis-server
 
 # nginx config
-cp /vagrant/provision/config/nginx/* /etc/nginx/sites-available/
-ln -s /etc/nginx/sites-available/develop.local /etc/nginx/sites-enabled/
+cp -f /vagrant/provision/config/nginx/* /etc/nginx/sites-available/
+ln -fs /etc/nginx/sites-available/develop.local /etc/nginx/sites-enabled/
 service nginx restart
