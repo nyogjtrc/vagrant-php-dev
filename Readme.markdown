@@ -10,4 +10,17 @@ Use offcial ubuntu 14.04 LTS box.
 * Nginx
 * PHP5
 * MySQL
+* PhpMyAdmin
 * Redis
+
+## Hosts File
+
+```
+127.0.0.1 develop.local
+```
+
+## Develop Url
+
+* http://localhost:8080
+* http://develop.local:8080
+* http://localhost:8080/phpmyadmin/
