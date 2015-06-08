@@ -12,6 +12,7 @@ Use offcial ubuntu 14.04 LTS box.
 * MySQL
 * PhpMyAdmin
 * Redis
+* MongoDB
 
 ## Hosts File
 

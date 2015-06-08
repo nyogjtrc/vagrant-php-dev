@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+
 apt-get update
 
 # git
@@ -25,6 +29,9 @@ apt-get -y install phpmyadmin
 
 # redis
 apt-get -y install redis-server
+
+# mongodb
+apt-get install -y mongodb-org
 
 # nginx config
 cp -f /vagrant/provision/config/nginx/* /etc/nginx/sites-available/
